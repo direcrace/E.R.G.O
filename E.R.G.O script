@@ -1,0 +1,115 @@
+import discord
+from discord.ext import commands
+import asyncio  # <-- DAS HIER FEHLTE
+
+# ==========================
+# E.R.G.O Discord Bot
+# ==========================
+
+# Hier deinen NEUEN Bot-Token einfügen
+TOKEN = "YOUR_BOT_TOKEN"
+
+# Intents
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
+
+# Bot erstellen
+bot = commands.Bot(
+    command_prefix="!",
+    intents=intents
+)
+
+# Wenn der Bot online geht
+@bot.event
+async def on_ready():
+    print(f"Connected as {bot.user}")
+    print("E.R.G.O running. do your call.")
+
+# Test-Befehl
+@bot.command()
+async def connection(ctx):
+    await ctx.send("Connected...")
+
+@bot.command()
+async def hello(ctx):
+    await ctx.send(f"Hello {ctx.author.display_name}! :3")
+
+@bot.command()
+async def dice(ctx):
+    import random
+    zahl = random.randint(1, 6)
+    await ctx.send(f"you got {zahl}!")
+
+@bot.command()
+async def say(ctx, *, nachricht):
+    await ctx.send(nachricht)
+
+@bot.command()
+async def system(ctx):
+    await ctx.send("A.P.O.L.O. v3.14 ONLINE\nStatus: i exist\nError: i am not a real bot\nSystem: i am a bot\nSystem: i am a bot\nSystem: i am a bot\nSystem: i am a bot\nSystem: i am a bot\nSystem")
+
+@bot.command()
+async def protocol(ctx):
+    await ctx.send("i saw Blueberry commiting a crime. penalty: pending")
+
+@bot.command()
+async def roast(ctx, member: discord.Member):
+    roasts = ["is a bad boy :", "has 2 left hands", "is a NPC"]
+    import random
+    await ctx.send(f"{member.mention} {random.choice(roasts)} :3")
+
+@bot.command()
+async def feedback(ctx, *, nachricht):
+    # 1. Namen vom Feedback-Kanal.
+    feedback_kanal_name = "feedback"
+    
+    # 2. Kanal suchen
+    kanal = discord.utils.get(ctx.guild.text_channels, name=feedback_kanal_name)
+    
+    if kanal is None:
+        await ctx.send(f"ERROR: there is no channel named `#{feedback_kanal_name}` :(")
+        return
+
+    # 3. Schöne Embed-Nachricht bauen
+    embed = discord.Embed(
+        title="📝 New Feedback",
+        description=nachricht,
+        color=discord.Color.blue()
+    )
+    embed.set_author(name=ctx.author.display_name, icon_url=ctx.author.avatar)
+    embed.add_field(name="Von Server", value=ctx.guild.name, inline=True)
+    embed.set_footer(text=f"User ID: {ctx.author.id}")
+
+    # 4. In den Feedback-Kanal schicken
+    await kanal.send(embed=embed)
+    
+    # 5. Bestätigung an den User
+    await ctx.send(f"Thanks, {ctx.author.display_name}! your feedback has been received.")
+
+async def console_input():
+    await bot.wait_until_ready() # Wartet bis Bot online ist
+    print("\n[APOLLO BROADCAST] Tippe eine Nachricht + Enter zum Senden an ALLE Server")
+    
+    while not bot.is_closed():
+        nachricht = await asyncio.to_thread(input, "BROADCAST > ") # Terminal Input
+        if nachricht.lower() == "exit":
+            await bot.close()
+            break
+        
+        gesendet = 0
+        # An ALLE Server schicken
+        for guild in bot.guilds:
+            # Nimmt den ersten Text-Kanal wo er schreiben darf
+            for kanal in guild.text_channels:
+                if kanal.permissions_for(guild.me).send_messages:
+                    try:
+                        await kanal.send(f"📢 **BROADCAST VON APOLLO:** {nachricht}")
+                        gesendet += 1
+                        break # Nur 1 Kanal pro Server
+                    except:
+                        pass
+        print(f"Gesendet an {gesendet} von {len(bot.guilds)} Servern")
+
+# Bot starten (immer GANZ UNTEN)
+bot.run(TOKEN)
