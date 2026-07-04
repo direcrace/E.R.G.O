@@ -1,7 +1,7 @@
 # E.R.G.O
 APOLLO Source Available License (ASAL) v1.0
 
-Copyright (c) 2026 Keks
+Copyright (c) 2026 Nero
 
 Permission is granted to use this software for personal, educational, and non-commercial community purposes.
 
@@ -21,7 +21,7 @@ All rights not expressly granted by this license are reserved by the copyright h
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE AUTHOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS SOFTWARE.
 
-The APOLLO name, branding, logos, lore, documentation, and fictional universe are protected intellectual property of the author and may not be copied, reused, or adapted without prior written permission.
+The E.R.G.O(Executive Response & Governance Operator) name, branding, logos, lore, documentation, and fictional universe are protected intellectual property of the author and may not be copied, reused, or adapted without prior written permission.
 
 Contact:
 teamtestdevteam@gmx.net
