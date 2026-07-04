@@ -1,13 +1,14 @@
 import discord
 from discord.ext import commands
 import asyncio  # <-- DAS HIER FEHLTE
+import os
 
 # ==========================
 # E.R.G.O Discord Bot
 # ==========================
 
-# Hier deinen NEUEN Bot-Token einfügen
-TOKEN = "YOUR_BOT_TOKEN"
+# Token wird aus der Umgebungsvariable DISCORD_TOKEN gelesen
+TOKEN = os.environ["DISCORD_TOKEN"]
 
 # Intents
 intents = discord.Intents.default()
