@@ -1,2 +1,27 @@
 # E.R.G.O
-Basic Discord bot (text only) ! prefix no / commands
+APOLLO Source Available License (ASAL) v1.0
+
+Copyright (c) 2026 Keks
+
+Permission is granted to use this software for personal, educational, and non-commercial community purposes.
+
+You are permitted to:
+- Download and run the software.
+- Study the source code.
+- Use the software on your own Discord server.
+
+You are NOT permitted to:
+- Modify the source code and redistribute it.
+- Redistribute the original source code.
+- Sell, sublicense, or commercially exploit the software.
+- Claim the software or any part of it as your own work.
+- Remove or alter this license or copyright notice.
+
+All rights not expressly granted by this license are reserved by the copyright holder.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. THE AUTHOR SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM THE USE OF THIS SOFTWARE.
+
+The APOLLO name, branding, logos, lore, documentation, and fictional universe are protected intellectual property of the author and may not be copied, reused, or adapted without prior written permission.
+
+Contact:
+teamtestdevteam@gmx.net
